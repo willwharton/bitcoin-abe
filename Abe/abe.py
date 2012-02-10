@@ -730,9 +730,7 @@ class Abe:
                     })
 
 
-        body = ['<table><tr><th>Transaction</th><th>Fee</th>'
-                 '<th>Size (kB)</th><th>From (amount)</th><th>To (amount)</th>'
-                 '</tr>\n']
+
         for tx_id in tx_ids:
             tx = txs[tx_id]
             is_coinbase = (tx_id == tx_ids[0])
@@ -740,11 +738,7 @@ class Abe:
                 fees = 0
             else:
                 fees = tx['total_in'] - tx['total_out']
-            body += ['<tr><td><a href="../tx/' + tx['hash'] + '">',
-                     tx['hash'][:10], '...</a>'
-                     '</td><td>', format_satoshis(fees, chain),
-                     '</td><td>', tx['size'] / 1000.0,
-                     '</td><td>']
+
 
             txobj = {'hash':tx['hash'],
 					'fee':format_satoshis(fees, chain),
